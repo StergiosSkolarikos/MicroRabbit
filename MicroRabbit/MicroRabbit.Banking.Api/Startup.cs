@@ -41,7 +41,7 @@ namespace MicroRabbit.Banking.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title="Banking Microservice",Version="v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo{ Title="Banking Microservice",Version="v1"});
             }
             );
 
@@ -62,24 +62,25 @@ namespace MicroRabbit.Banking.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
+           
+            //app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger,json", "Banking Microservice V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banking Microservice V1");
             }
             );
+
+            app.UseRouting();
+
+            //app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            
-                
+
+
         }
     }
 }
